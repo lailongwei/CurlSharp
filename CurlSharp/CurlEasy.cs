@@ -1356,7 +1356,8 @@ namespace CurlSharp
                 {
                     fixed (byte *bufPtr = &buffer[0])
                     {
-                        setLastError(NativeMethods.curl_easy_setopt(_pCurl, option, buffer), option);
+                        IntPtr wrapBufPtr = new IntPtr(bufPtr);
+                        setLastError(NativeMethods.curl_easy_setopt(_pCurl, option, wrapBufPtr), option);
                     }
                 }
 #endif
